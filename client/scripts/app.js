@@ -7,13 +7,17 @@ var message = {
 
 var app = {
   
+  constructor: function() {
+    this.server = 'http://parse.sfs.hackreactor.com/chatterbox/classes/messages';
+  },
+  
   init: function () {
     
   },
 
   send: function (message) {
     $.ajax({
-      url: 'http://parse.sfs.hackreactor.com/chatterbox/classes/messages',  
+      url: this.server,  
       type: 'POST',
       data: message,
       contentType: 'application/json',
@@ -27,14 +31,15 @@ var app = {
     });  
   },
 
-  fetch: function (message) {
+  fetch: function () {
+
     $.ajax({
-      url: undefined,  
+      url: this.server,  
       type: 'GET',
       data: message,
-      contentType: 'application/json',
+      contentType: 'json',
       success: function (data) {
-        console.log('chatterbox: Message sent');
+        console.log('chatterbox: Message sent', data);
       },
       error: function (data) {
       // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
@@ -52,18 +57,31 @@ var app = {
     $('#chats').prepend('<span>' + message + '</span>');
   },
   
-  handleSubmit: function () {
-    $('#CreateRoom').on('click', function() {
-      this.renderRoom();
-    });
+  handleSubmit: function (e) {
+    $('#CreateRoom').click(function(e) {
+      app.renderRoom();
+    }); 
+  }, 
+  
+  renderRoom: function() {
+    var nameValue = $('#nameAroom').val();
+    $('#roomSelect').prepend('<option "value=room">' + nameValue + '</option>');
   },
   
-  renderRoom: function(message) {
-    var nameValue = $('.nameAroom').val();
-    $('#roomSelect').prepend('<option>' + nameValue + '</option>');
+  
+  handleUser: function (e) {
+    $('.createUser').click(function(e) {
+      app.renderUser();
+    }); 
+  },
+  
+  renderUser: function() {
+    var nameValue = $('#user').val();
+    $('#names').append('<li "value=user">' + nameValue + '</li>');
   }
-
-
+ 
 
 };
 
+// $(document).ready(function(handleUser, handleSubmit);
+  
