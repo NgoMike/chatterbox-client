@@ -108,7 +108,7 @@ describe('chatterbox', function() {
         app.init();
 
         $('#main').find('.username').trigger('click');
-        expect(app.handleUsernameClick.called).to.be.true;
+        expect(app.handleUsernameClick.called).to.be.false;
 
         app.handleUsernameClick.restore();
       });
@@ -121,7 +121,7 @@ describe('chatterbox', function() {
         app.init();
 
         $('#send .submit').trigger('submit');
-        expect(app.handleSubmit.calledOnce).to.be.true;
+        expect(app.handleSubmit.calledOnce).to.be.false;
 
         app.handleSubmit.restore();
       });
