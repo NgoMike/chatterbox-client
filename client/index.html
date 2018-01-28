@@ -4,12 +4,13 @@
   <head>
     <meta charset="utf-8">
     <title>chatterbox</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- dependencies -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
-    <script>
+  <!--   <script>
       // YOU DO NOT NEED TO EDIT THIS CODE
       if (!/(&|\?)username=/.test(window.location.search)) {
         var newSearch = window.location.search;
@@ -19,12 +20,17 @@
         newSearch += 'username=' + (prompt('What is your name?') || 'anonymous');
         window.location.search = newSearch;
       }
-    </script>
+    </script> -->
     <!-- your scripts -->
     <script src="env/config.js"></script>
     <script src="scripts/app.js"></script>
   </head>
   <body>
+
+  <div class="FriendList">
+    <h1>Friend List👩‍💻👨‍💻</h1>
+  </div>
+
     <div id="main">
       <h1>chatterbox</h1>
       <!-- Your HTML goes here! -->
@@ -36,15 +42,15 @@
             </select>
         <form>
           <input id="user" type="text" placeholder="Enter username">
-            <button class="createUser submit" > Create user</button>
+            <button  class="createUser btn-success">Create user</button>
    
             <div>
               <input id="nameAroom" type="text" placeholder="Create Room">
-              <button id="CreateRoom" type='button'>Create</button>
+              <button id="CreateRoom" class="btn btn-success" type='button'>Create</button>
             </div>
           <textarea class="chat" type="text" placeholder="Enter message here">
           </textarea>
-        <button id="send-message" class="submit"> Send message</button>
+        <button id="send-message" class="btn btn-success" class="submit">Send message</button>
         </form>
         <ul id="names"></ul>
       </div>
